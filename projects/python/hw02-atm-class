@@ -1,0 +1,54 @@
+## ATM Class with 5 methods
+
+class ATM:
+    def __init__(self, firstname, lastname, account_number, id_number, balance):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.account_number = account_number
+        self.id_number = id_number
+        self.balance = balance
+
+    # ATM methods
+    def deposit(self, amount):
+        print("--- Deposit ---")
+        self.balance += amount
+        print(f"Deposit successful\nYour balance is: {self.balance}")
+
+    def withdrawal(self, amount):
+        print("--- Withdrawal ---")
+        if(amount > self.balance):
+            print("Insufficient balance.")
+        else:
+            self.balance -= amount
+            print(f"Withdrawal successful\nYour balance is: {self.balance}")
+
+    def transfer(self, recipient_account_number, amount):
+        print("--- Transfer ---")
+        if(amount > self.balance):
+            print("Insufficient balance.")
+        else:
+            self.balance -= amount
+            print(f"Your transfer has been confirmed.\nRecipient account: {recipient_account_number}\nAmount to transfer: {amount}\nYour balance is: {self.balance}")
+
+    def pay_bill(self, bill_name, bill_amount):
+        print("--- Transfer ---")
+        if(bill_amount > self.balance):
+            print("Insufficient balance.")
+        else:
+            self.balance -= bill_amount
+            print(f"Transaction successful.\nAmount: {bill_amount}\nFrom: {self.firstname} {self.lastname}\nTo: {bill_name}\nYour balance is: {self.balance}")
+
+    def confirm_id(self, user_id):
+        print("--- Confirm ID ---")
+        if(user_id == self.id_number):
+            print("ID Confirmed")
+        else:
+            print("ID invalid. Try again!")
+
+account1 = ATM("Jennie", "Kim", "000-1-2345-6", "1339998887776", 1000000)
+
+# account1.deposit(10000)
+# account1.withdrawal(10000)
+# account1.transfer("0123456789", 10000)
+# account1.pay_bill("Shopee", 1000)
+# account1.confirm_id("1339998887776")
